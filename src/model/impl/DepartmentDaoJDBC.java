@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentDaoJDBC implements DepartmentDao {
@@ -60,6 +61,26 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     @Override
     public List<Department> listAll() {
-        return List.of();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.prepareStatement("SELECT * FROM coursejdbc.department");
+            rs = st.executeQuery();
+            List<Department> list = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt("Id");
+                String name = rs.getString("Name");
+                Department dep = new Department(id, name);
+                list.add(dep);
+            }
+            return list;
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
     }
 }
