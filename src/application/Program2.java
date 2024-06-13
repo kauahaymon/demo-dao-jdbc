@@ -17,5 +17,10 @@ public class Program2 {
         System.out.println("\n" + "*** TEST 2: department listAll ***");
         List<Department> list = departmentDao.listAll();
         list.forEach(System.out::println);
+
+        System.out.println("\n" + "*** TEST 3: department insert ***");
+        Department newDepartment = new Department(6, "Computing");
+        departmentDao.insert(newDepartment);
+        System.out.println("New department inserted! Id = " + newDepartment.getId());
     }
 }
