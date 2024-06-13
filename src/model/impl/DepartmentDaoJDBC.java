@@ -21,12 +21,11 @@ public class DepartmentDaoJDBC implements DepartmentDao {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement(
-                    "INSERT INTO coursejdbc.department (Id, Name) " +
-                    "VALUES (?, ?)",
+                    "INSERT INTO coursejdbc.department (Name) " +
+                    "VALUES (?)",
                     Statement.RETURN_GENERATED_KEYS
             );
-            st.setInt(1, obj.getId());
-            st.setString(2, obj.getName());
+            st.setString(1, obj.getName());
             int rowsAffected = st.executeUpdate();
             if(rowsAffected > 0) {
                 ResultSet rs = st.getGeneratedKeys();
@@ -50,7 +49,22 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     @Override
     public void update(Department obj) {
-
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(
+                    "UPDATE coursejdbc.department " +
+                    "SET Name = ? WHERE Id = ?"
+            );
+            st.setString(1, obj.getName());
+            st.setInt(2, obj.getId());
+            st.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
