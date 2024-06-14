@@ -15,7 +15,7 @@ This Java project demonstrates the implementation of the Data Access Object (DAO
 
 ## Project Structure
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/6b9e70b9-3c65-4990-a8d1-3570c04fc069/b272020f-1ed8-40d7-bb81-ba68a22cca1e/Untitled.png)
+![Project structure](images/project-struture.png)
 
 ## Structure overview
 
