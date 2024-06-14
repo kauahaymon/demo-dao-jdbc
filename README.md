@@ -8,8 +8,8 @@ This Java project demonstrates the implementation of the Data Access Object (DAO
 
 - **CRUD Operations**:
     - Perform Create, Read, Update, and Delete operations on sellers and departments.
-- **List and** :
-    - List all sellers and departments, and find specific records based on various criteria.
+- **List and Find** :
+    - List all sellers and departments, and find specific records based on their department or id.
 - **Separation of Concerns**:
     - Utilizes the DAO design pattern to separate the data access logic from the business logic, promoting a cleaner and more maintainable code-base.
 
